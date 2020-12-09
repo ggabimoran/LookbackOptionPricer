@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="greeks.h" />
+    <ClInclude Include="matrix.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="lookbackcall.h" />
     <ClInclude Include="lookbackoption.h" />
