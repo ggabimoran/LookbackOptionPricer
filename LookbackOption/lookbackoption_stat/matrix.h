@@ -9,7 +9,8 @@ namespace lookback {
 		int N_, M_;
 		std::vector<std::vector<double>> data;
 	public:
-		Matrix(int N, int M);
+		//if normalInit true initialize with a standard normal distribution simulation for each component
+		Matrix(int N, int M, bool normalInit=true); 
 	};
 }
 
