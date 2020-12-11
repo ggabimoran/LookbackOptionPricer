@@ -2,17 +2,26 @@
 #define MATRIX_H
 
 #include <vector>
+#include <random>
+#include <iostream>
+#include <chrono>
 
 namespace lookback {
+	enum class MatrixInitialization {
+		none,//zero initialize
+		standard_normal
+	};
+
 	class Matrix {
 	private:
-		int N_, M_;
+		int M_, N_;
 		std::vector<double> data; //access i,j element with data[i*N + j]
 	public:
-		//if normalInit true initialize with a standard normal distribution simulation for each component
-		Matrix(int N, int M, bool normalInit=true); 
+		Matrix(int M, int N, MatrixInitialization init=MatrixInitialization::standard_normal); 
+		virtual ~Matrix() {};
 		double operator()(int i, int j) const;
-		double& operator()(int i, int j);
+		std::vector<double> operator()(int i) const; //get line i of the matrix
+		friend std::ostream& operator<<(std::ostream& out, const Matrix& m);
 	};
 }
 
