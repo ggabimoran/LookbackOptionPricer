@@ -1,16 +1,68 @@
 ﻿  greeks.cpp
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(9): error C2143: erreur de syntaxe : absence de ',' avant '&'
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(11): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(11): error C2143: erreur de syntaxe : absence de ',' avant '&'
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(12): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(12): error C2143: erreur de syntaxe : absence de ',' avant '&'
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(13): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(13): error C2143: erreur de syntaxe : absence de ',' avant '&'
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(14): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(14): error C2143: erreur de syntaxe : absence de ',' avant '&'
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(15): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.h(15): error C2143: erreur de syntaxe : absence de ',' avant '&'
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(14): error C2259: 'lookback::LookbackOption' : impossible d'instancier une classe abstraite
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(14): note: à cause des membres suivants :
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(14): note: 'double lookback::LookbackOption::analytical_price(void) const' : est abstrait
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(25): note: voir la déclaration de 'lookback::LookbackOption::analytical_price'
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(14): note: 'double lookback::LookbackOption::simulate_payoff(std::vector<double,std::allocator<_Ty>>) const' : est abstrait
+          with
+          [
+              _Ty=double
+          ]
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(26): note: voir la déclaration de 'lookback::LookbackOption::simulate_payoff'
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(15): error C2259: 'lookback::LookbackOption' : impossible d'instancier une classe abstraite
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(15): note: à cause des membres suivants :
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(15): note: 'double lookback::LookbackOption::analytical_price(void) const' : est abstrait
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(25): note: voir la déclaration de 'lookback::LookbackOption::analytical_price'
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(15): note: 'double lookback::LookbackOption::simulate_payoff(std::vector<double,std::allocator<_Ty>>) const' : est abstrait
+          with
+          [
+              _Ty=double
+          ]
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(26): note: voir la déclaration de 'lookback::LookbackOption::simulate_payoff'
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(23): error C2259: 'lookback::LookbackOption' : impossible d'instancier une classe abstraite
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(23): note: à cause des membres suivants :
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(23): note: 'double lookback::LookbackOption::analytical_price(void) const' : est abstrait
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(25): note: voir la déclaration de 'lookback::LookbackOption::analytical_price'
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(23): note: 'double lookback::LookbackOption::simulate_payoff(std::vector<double,std::allocator<_Ty>>) const' : est abstrait
+          with
+          [
+              _Ty=double
+          ]
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(26): note: voir la déclaration de 'lookback::LookbackOption::simulate_payoff'
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(24): error C2259: 'lookback::LookbackOption' : impossible d'instancier une classe abstraite
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(24): note: à cause des membres suivants :
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(24): note: 'double lookback::LookbackOption::analytical_price(void) const' : est abstrait
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(25): note: voir la déclaration de 'lookback::LookbackOption::analytical_price'
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(24): note: 'double lookback::LookbackOption::simulate_payoff(std::vector<double,std::allocator<_Ty>>) const' : est abstrait
+          with
+          [
+              _Ty=double
+          ]
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(26): note: voir la déclaration de 'lookback::LookbackOption::simulate_payoff'
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(28): error C2259: 'lookback::LookbackOption' : impossible d'instancier une classe abstraite
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(28): note: à cause des membres suivants :
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(28): note: 'double lookback::LookbackOption::analytical_price(void) const' : est abstrait
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(25): note: voir la déclaration de 'lookback::LookbackOption::analytical_price'
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(28): note: 'double lookback::LookbackOption::simulate_payoff(std::vector<double,std::allocator<_Ty>>) const' : est abstrait
+          with
+          [
+              _Ty=double
+          ]
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(26): note: voir la déclaration de 'lookback::LookbackOption::simulate_payoff'
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(29): error C2259: 'lookback::LookbackOption' : impossible d'instancier une classe abstraite
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(29): note: à cause des membres suivants :
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(29): note: 'double lookback::LookbackOption::analytical_price(void) const' : est abstrait
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(25): note: voir la déclaration de 'lookback::LookbackOption::analytical_price'
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(29): note: 'double lookback::LookbackOption::simulate_payoff(std::vector<double,std::allocator<_Ty>>) const' : est abstrait
+          with
+          [
+              _Ty=double
+          ]
+  c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\lookbackoption.h(26): note: voir la déclaration de 'lookback::LookbackOption::simulate_payoff'
+  interface.cpp
+  lookbackcall.cpp
+  lookbackoption.cpp
+  lookbackput.cpp
   matrix.cpp
 c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\matrix.cpp(7): warning C4244: 'initialisation' : conversion de '_Rep' en 'unsigned int', perte possible de données
           with
@@ -23,4 +75,6 @@ c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookba
   c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\matrix.cpp(8): note: voir la déclaration de 'generator'
 c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\matrix.cpp(15): error C2360: l'initialisation de 'seed' est ignorée par l'étiquette 'case'
   c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\matrix.cpp(7): note: voir la déclaration de 'seed'
+  utils.cpp
   Génération de code en cours...
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\interface.cpp(21): error C4700: variable locale 'option' non initialisée utilisée

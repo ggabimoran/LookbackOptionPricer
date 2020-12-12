@@ -19,6 +19,8 @@ namespace lookback {
 	public:
 		Matrix(int M, int N, MatrixInitialization init=MatrixInitialization::standard_normal); 
 		virtual ~Matrix() {};
+		int get_M() const { return M_; }
+		int get_N() const { return N_;  }
 		double operator()(int i, int j) const;
 		std::vector<double> operator()(int i) const; //get line i of the matrix
 		friend std::ostream& operator<<(std::ostream& out, const Matrix& m);

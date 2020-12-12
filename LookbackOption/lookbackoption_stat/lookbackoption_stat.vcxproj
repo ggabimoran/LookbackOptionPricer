@@ -25,10 +25,16 @@
     <ClInclude Include="lookbackcall.h" />
     <ClInclude Include="lookbackoption.h" />
     <ClInclude Include="lookbackput.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="greeks.cpp" />
+    <ClCompile Include="interface.cpp" />
+    <ClCompile Include="lookbackcall.cpp" />
+    <ClCompile Include="lookbackoption.cpp" />
+    <ClCompile Include="lookbackput.cpp" />
     <ClCompile Include="matrix.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

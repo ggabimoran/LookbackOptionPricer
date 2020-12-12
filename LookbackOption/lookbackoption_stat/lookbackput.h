@@ -6,8 +6,10 @@
 namespace lookback {
 	class LookbackPut : public LookbackOption {
 	public:
-		virtual double analytical_price();
-		virtual double simulate_payoff(std::vector<double> normSimulation);
+		LookbackPut(double t, double T, double St, double r, double sigma) : LookbackOption(t, T, St, r, sigma) {};
+		virtual ~LookbackPut() {};
+		virtual double analytical_price() const override;
+		virtual double simulate_payoff(std::vector<double> normSimulation) const override;
 	};
 }
 

@@ -5,8 +5,11 @@
 
 namespace lookback {
 	class LookbackCall : public LookbackOption {
-		virtual double analytical_price();
-		virtual double simulate_payoff(std::vector<double> normSimulation);
+	public:
+		LookbackCall(double t, double T, double St, double r, double sigma) : LookbackOption(t, T, St, r, sigma) {};
+		virtual ~LookbackCall() {};
+		virtual double analytical_price() const override;
+		virtual double simulate_payoff(std::vector<double> normSimulation) const override;
 	};
 }
 
