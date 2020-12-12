@@ -1,7 +1,7 @@
 #include "interface.h"
 
 namespace lookback {
-	std::vector<double> compute_greeks(const LookbackOption& option, const Matrix& normSimuls) {
+	std::vector<double> compute_greeks(LookbackOption& option, const Matrix& normSimuls) {
 		std::vector<double> greeks = std::vector<double>(5);
 		greeks[0] = Greeks::delta(option, normSimuls);
 		greeks[1] = Greeks::gamma(option, normSimuls);
@@ -14,6 +14,8 @@ namespace lookback {
 		clock_t tStart = clock();
 		Results results{};
 		int St_discretization = 10;
+		double St_max = 2 * St;
+		double St_min = 0;
 		double payoff_estimate;
 		Matrix normSimuls{ M,N };
 		LookbackOption* option;
@@ -27,6 +29,7 @@ namespace lookback {
 		results.prices = std::vector<double>(St_discretization);
 		for (int k{ 0 }; k < St_discretization; ++k) {
 			normSimuls = Matrix{ M,N };
+			option->set_St(St_min + (St_max - St_min) * k / St_discretization);
 			results.deltas[k] = Greeks::delta(*option,normSimuls);
 			payoff_estimate = 0;
 			for (int i{ 0 }; i < M; ++i) {

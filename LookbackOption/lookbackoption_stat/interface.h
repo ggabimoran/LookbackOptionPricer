@@ -22,7 +22,7 @@ namespace lookback{
 	} Results;
 	
 	//calls functions from greeks.h
-	std::vector<double> compute_greeks(const LookbackOption& option, const Matrix& normSimuls);
+	std::vector<double> compute_greeks(LookbackOption& option, const Matrix& normSimuls);
 
 	//creates Lookbackcall/Lookbackput based on type value, then calls analytical_price() member for P
 	// Then create Matrix of normal distribution simulations of size N,M and 

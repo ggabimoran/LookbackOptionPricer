@@ -1,60 +1,68 @@
 #include "greeks.h"
-
+#include <cmath>
 namespace lookback {
 	double Greeks::alpha{ 0.01 };
 
-	double Greeks::derivative_approx(const LookbackOption& option, const Matrix& normSimuls, Greek_type type) {
-		double divider, greek;
-		LookbackOption *payoffupper;
-		LookbackOption *payofflower;
+	double Greeks::derivative_approx(LookbackOption& option, const Matrix& normSimuls, Greek_type type) {
+		double divider, greek, payoffupper, payofflower, payoffmiddle;
 		int M = normSimuls.get_M();
 		std::vector<double> simulation{};
-		switch (type) {
-		case Greek_type::delta:
-			*payoffupper = { option.get_t(),option.get_T(),option.get_St() * (1 + Greeks::alpha),option.get_r(),option.get_sigma() };
-			*payoffupper = { option.get_t(),option.get_T(),option.get_St() * (1 - Greeks::alpha),option.get_r(),option.get_sigma() };
-			divider = option.get_St();
-			break;
-		case Greek_type::gamma:
-			//TODO
-			divider = option.get_St();
-			break;
-		case Greek_type::vega:
-			*payoffupper = { option.get_t(),option.get_T(),option.get_St(),option.get_r(),option.get_sigma() * (1 + Greeks::alpha) };
-			*payoffupper = { option.get_t(),option.get_T(),option.get_St(),option.get_r(),option.get_sigma() * (1 - Greeks::alpha) };
-			divider = option.get_sigma();
-			break;
-		case Greek_type::rho:
-			*payoffupper = { option.get_t(),option.get_T(),option.get_St(),option.get_r() * (1 + Greeks::alpha),option.get_sigma() };
-			*payoffupper = { option.get_t(),option.get_T(),option.get_St(),option.get_r() * (1 - Greeks::alpha),option.get_sigma() };
-			divider = option.get_r();
-			break;
-		case Greek_type::theta:
-			//TODO
-			divider = option.get_T();
-			break;
-		}
 		greek = 0;
 		for (int i{ 0 }; i < M; ++i) {
 			simulation = normSimuls(i);
-			greek += payoffupper->simulate_payoff(simulation) - payofflower->simulate_payoff(simulation);
+			switch (type) {
+			case Greek_type::delta:
+				divider = option.get_St();
+				payoffupper = option.set_St(divider * (1 + Greeks::alpha)).simulate_payoff(simulation);
+				payofflower = option.set_St(divider * (1 - Greeks::alpha)).simulate_payoff(simulation);
+				option.set_St(divider);
+				break;
+			case Greek_type::gamma:
+				divider = option.get_St();
+				payoffupper = option.set_St(divider * (1 + Greeks::alpha)).simulate_payoff(simulation);
+				payoffmiddle = option.set_St(divider).simulate_payoff(simulation);
+				payofflower = option.set_St(divider * (1 - Greeks::alpha)).simulate_payoff(simulation);
+				option.set_St(divider);
+				break;
+			case Greek_type::vega:
+				divider = option.get_sigma();
+				payoffupper = option.set_sigma(divider * (1 + Greeks::alpha)).simulate_payoff(simulation);
+				payofflower = option.set_sigma(divider * (1 - Greeks::alpha)).simulate_payoff(simulation);
+				option.set_sigma(divider);
+				break;
+			case Greek_type::rho:
+				divider = option.get_r();
+				payoffupper = option.set_r(divider * (1 + Greeks::alpha)).simulate_payoff(simulation);
+				payofflower = option.set_r(divider * (1 - Greeks::alpha)).simulate_payoff(simulation);
+				option.set_r(divider);
+				break;
+			case Greek_type::theta:
+				divider = option.get_t();
+				payoffupper = option.set_t(divider * (1 + Greeks::alpha)).simulate_payoff(simulation);
+				payofflower = option.set_t(divider * (1 - Greeks::alpha)).simulate_payoff(simulation);
+				option.set_t(divider);
+				break;
+			}
+			if (type == Greek_type::gamma) //second order derivative approx
+				greek += (payoffupper + payofflower - 2 * payoffmiddle) / (2 * Greeks::alpha * divider);
+			else //first order derivative approx
+				greek += (payoffupper - payofflower) / (2 * Greeks::alpha * divider);
 		}
-		greek /= (2 * alpha * divider);
 		return greek;
 	}
-	double Greeks::delta(const LookbackOption& option, const Matrix& normSimuls) {
+	double Greeks::delta(LookbackOption& option, const Matrix& normSimuls) {
 		return derivative_approx(option, normSimuls, Greek_type::delta);
 	}
-	double Greeks::gamma(const LookbackOption& option, const Matrix& normSimuls) {
+	double Greeks::gamma(LookbackOption& option, const Matrix& normSimuls) {
 		return derivative_approx(option, normSimuls, Greek_type::gamma);
 	}
-	double Greeks::vega(const LookbackOption& option, const Matrix& normSimuls) {
+	double Greeks::vega(LookbackOption& option, const Matrix& normSimuls) {
 		return derivative_approx(option, normSimuls, Greek_type::vega);
 	}
-	double Greeks::rho(const LookbackOption& option, const Matrix& normSimuls) {
+	double Greeks::rho(LookbackOption& option, const Matrix& normSimuls) {
 		return derivative_approx(option, normSimuls, Greek_type::rho);
 	}
-	double Greeks::theta(const LookbackOption& option, const Matrix& normSimuls) {
+	double Greeks::theta(LookbackOption& option, const Matrix& normSimuls) {
 		return derivative_approx(option, normSimuls, Greek_type::theta);
 	}
 }
