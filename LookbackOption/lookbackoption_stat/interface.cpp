@@ -18,11 +18,10 @@ namespace lookback {
 		double St_min = 0;
 		double payoff_estimate;
 		Matrix normSimuls{ M,N };
-		LookbackOption* option;
-		if (type.compare("call"))
-			*option = LookbackCall(t, T, St, r, sigma);
-		else
-			*option = LookbackPut(t, T, St, r, sigma);
+		LookbackCall call{ t,T,St,r,sigma };
+		LookbackPut put{ t,T,St,r,sigma };
+		LookbackOption* option{ &call };
+		if (type.compare("put")) option = &put;
 		results.greeks = compute_greeks(*option, normSimuls);
 		results.P = option->analytical_price();
 		results.deltas = std::vector<double>(St_discretization);
