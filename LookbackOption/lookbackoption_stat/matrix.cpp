@@ -1,7 +1,10 @@
 #include "matrix.h"
 
+#include <exception>
+
 namespace lookback {
 	Matrix::Matrix(int M, int N, MatrixInitialization init) : M_{ M }, N_{ N }, data{std::vector<double>(M*N,0)} {
+		if (M < 0 && N < 0) throw std::invalid_argument("Matrix dimensions must be positive");
 		switch (init) {
 		case MatrixInitialization::standard_normal: {
 			unsigned seed = static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count());
@@ -18,9 +21,11 @@ namespace lookback {
 		}
 	}
 	double Matrix::operator()(int i, int j) const {
+		if (i < 0 || j < 0 || i >= M_ || j >= N_) throw std::out_of_range("Matrix element indexed out of range");
 		return data[i*N_ + j];
 	}
 	std::vector<double> Matrix::operator()(int i) const {
+		if (i < 0 || i >= M_ ) throw std::out_of_range("Matrix row indexed out of range");
 		std::vector<double> row{std::vector<double>(N_)};
 		for (int j{ 0 }; j < N_; ++j)
 			row[j] = data[i*N_ + j];

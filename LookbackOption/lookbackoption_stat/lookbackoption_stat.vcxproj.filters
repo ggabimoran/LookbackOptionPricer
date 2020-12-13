@@ -33,9 +33,6 @@
     <ClInclude Include="matrix.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="greeks.cpp">
@@ -45,9 +42,6 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="lookbackcall.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="utils.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="lookbackput.cpp">
