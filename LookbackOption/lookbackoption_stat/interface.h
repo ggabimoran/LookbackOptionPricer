@@ -15,11 +15,14 @@ namespace lookback{
 
 	typedef struct{
 		double P; // theoretical price
-		std::vector<double> greeks; //greeks
-		std::vector<double> prices; //option prices as a function of the underlying share
-		std::vector<double> deltas; //option deltas as a function of the underlying share
+		double* greeks; //greeks
+		double* prices; //option prices as a function of the underlying share
+		double* deltas; //option deltas as a function of the underlying share
 		double execution_time; // program execution time
+		int St_discretization;
 	} Results;
+
+	double* convert_std_vector(std::vector<double> v);
 	
 	//calls functions from greeks.h
 	std::vector<double> compute_greeks(const LookbackOption& option, const Matrix& normSimuls);
