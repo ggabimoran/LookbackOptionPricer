@@ -2,7 +2,12 @@
 
 namespace lookback {
 	LookbackOption::LookbackOption(double t_, double T_, double St_, double r_, double sigma_) 
-		: t{ t_ }, T{ T_ }, St{ St_ }, r{ r_ }, sigma{ sigma_ }{}
+		: t{ t_ }, T{ T_ }, St{ St_ }, r{ r_ }, sigma{ sigma_ }{
+		if (t_ >= T_) throw std::invalid_argument("Lookback Option maturity T must be greater than current date t");
+		if (t_ < 0) throw std::invalid_argument("Lookback Option current date t and maturity T must be positive");
+		if (sigma_ <= 0) throw std::invalid_argument("Lookback Option volatility must be strictly positive");
+		if (St_ <= 0) throw std::invalid_argument("Lookback Option intial price St must be strictly positive");
+	}
 	LookbackOption::LookbackOption(const LookbackOption& option)
 		: t{ option.t }, T{ option.T }, St{ option.St }, r{ option.r }, sigma{ option.sigma }{}
 	LookbackOption& LookbackOption::operator=(const LookbackOption& option) {

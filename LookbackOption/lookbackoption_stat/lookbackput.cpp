@@ -25,7 +25,7 @@ namespace lookback {
 		for (int j{ 0 }; j < N; ++j) {
 			variation = exp(C * h + normSimulation[j] * std);
 			ST *= variation;
-			if (variation > 1)
+			if (ST > MT)
 				MT = ST;
 		}
 		payoff = MT - ST;

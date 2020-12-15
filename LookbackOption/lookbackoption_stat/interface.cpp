@@ -16,26 +16,27 @@ namespace lookback {
 		Results results{}; //initialize variables
 		int St_discretization = 10;
 		double St_max = 2 * St;
-		double St_min = 0;
+		double St_min = St / 2; // !! St cannot be equal to 0
 		double payoff_estimate;
 		Matrix normSimuls{ M,N };
 		LookbackCall call{ t,T,St,r,sigma };
 		LookbackPut put{ t,T,St,r,sigma };
 		LookbackOption* option{ &call };
-		if (type.compare("put")) option = &put;
+		if (type.compare("put") == 0) option = &put;
 
 		results.greeks = compute_greeks(*option, normSimuls); //compute option greeks
 		results.P = option->analytical_price(); //compute option analytical price
 
 		results.deltas = std::vector<double>(St_discretization); //compute deltas, prices for St discretization
 		results.prices = std::vector<double>(St_discretization);
+		double Pt = exp(-option->get_r() * (option->get_T() - option->get_t()));
 		for (int k{ 0 }; k < St_discretization; ++k) { // for each St value
 			normSimuls = Matrix{ M,N }; // instantiate new matrix of normal simulations
 			option->set_St(St_min + (St_max - St_min) * k / St_discretization); // set St
 			results.deltas[k] = Greeks::delta(*option,normSimuls); //compute delta
 			payoff_estimate = 0; //compute price estimate as empirical mean of M simulated payoffs
 			for (int i{ 0 }; i < M; ++i) {
-				payoff_estimate += option->simulate_payoff(normSimuls(i));
+				payoff_estimate += Pt * option->simulate_payoff(normSimuls(i));
 			}
 			payoff_estimate /= M;
 			results.prices[k] = payoff_estimate;

@@ -155,9 +155,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lookbackoption_app.cpp" />
+    <ClCompile Include="test_greeks.cpp" />
+    <ClCompile Include="test_interface.cpp" />
+    <ClCompile Include="test_lookbackoption.cpp" />
     <ClCompile Include="test_matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="test_greeks.h" />
+    <ClInclude Include="test_interface.h" />
+    <ClInclude Include="test_lookbackoption.h" />
     <ClInclude Include="test_matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
