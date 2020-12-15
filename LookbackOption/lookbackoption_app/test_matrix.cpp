@@ -38,5 +38,23 @@ namespace lookback {
 
 		//std::vector<double> v4 = m3(-1);  //exception thrown
 		//std::vector<double> v3 = m1(5); //exception thrown
+
+		std::cout << '\n' << '\n';
+		double execution_time;
+
+		clock_t tStart = clock();
+		Matrix m100{ 100,100 };
+		clock_t tEnd = clock();
+		execution_time = static_cast<double>(tEnd - tStart) / CLOCKS_PER_SEC;
+		std::cout << "Execution time to simulate 100 * 100 gaussians: " << execution_time << 's' << '\n';
+
+		std::cout << '\n' << '\n';
+
+		tStart = clock();
+		Matrix m1000{ 1000,1000 };
+		tEnd = clock();
+		execution_time = static_cast<double>(tEnd - tStart) / CLOCKS_PER_SEC;
+		std::cout << "Execution time to simulate 1000 * 1000 gaussians: " << execution_time << 's' << '\n';
+		
 	}
 }

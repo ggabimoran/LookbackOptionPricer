@@ -48,5 +48,39 @@ namespace lookback {
 		put_payoff_estimate /= 100;
 		std::cout << "Call payoff estimate for N=M=100: " << call_payoff_estimate << '\n';
 		std::cout << "Put payoff estimate for N=M=100: " << put_payoff_estimate << '\n';
+
+		std::cout << '\n' << '\n';
+
+		double execution_time;
+		Matrix normSimuls100(100, 100);
+		Matrix normSimuls1000(1000, 1000);
+		clock_t tStart = clock();
+
+		call_payoff_estimate = 0;
+		Pt = exp(-call.get_r() * (call.get_T() - call.get_t()));
+		for (int i{ 0 }; i < 100; ++i) {
+			simulation = normSimuls100(i);
+			call_payoff_estimate += Pt * call.simulate_payoff(simulation);
+		}
+		call_payoff_estimate /= 100;
+
+		clock_t tEnd = clock();
+		execution_time = static_cast<double>(tEnd - tStart) / CLOCKS_PER_SEC;
+		std::cout << "Execution time to estimate call payoff for N=M=100: " << execution_time << 's' << '\n';
+
+		std::cout << '\n' << '\n';
+
+		tStart = clock();
+		Pt = exp(-call.get_r() * (call.get_T() - call.get_t()));
+		call_payoff_estimate = 0;
+		for (int i{ 0 }; i < 1000; ++i) {
+			simulation = normSimuls1000(i);
+			call_payoff_estimate += Pt * call.simulate_payoff(simulation);
+		}
+		call_payoff_estimate /= 1000;
+
+		tEnd = clock();
+		execution_time = static_cast<double>(tEnd - tStart) / CLOCKS_PER_SEC;
+		std::cout << "Execution time to estimate call payoff for N=M=1000: " << execution_time << 's' << '\n';
 	}
 }
