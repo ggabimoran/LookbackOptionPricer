@@ -8,8 +8,8 @@
 int main() {
 	try {
 		//lookback::test_matrix();
-		lookback::test_lookbackoption();
-		//lookback::test_greeks();
+		//lookback::test_lookbackoption();
+		lookback::test_greeks();
 		//lookback::test_interface();
 	}
 	catch (const std::exception &exception) {

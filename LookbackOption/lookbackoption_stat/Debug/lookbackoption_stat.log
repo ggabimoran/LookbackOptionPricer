@@ -1,7 +1,4 @@
 ﻿  greeks.cpp
   interface.cpp
-  lookbackcall.cpp
-  lookbackoption.cpp
-  lookbackput.cpp
   Génération de code en cours...
   lookbackoption_stat.vcxproj -> C:\Users\gabri\OneDrive\S5_ProjetInfo\LookbackOptionPricer\LookbackOption\Debug\lookbackoption_stat.lib
