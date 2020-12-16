@@ -1,0 +1,16 @@
+
+Results for floating lookback option with parameters :
+t;T;Option type;St;r;sigma;M;N;St_Discretization
+0;1;call;100;0.05;0.1;100;100;10
+Execution time :
+0.577s
+Theoretical price :
+10.3013
+Delta;Gamma;Vega;Rho;Theta
+0.0872819;-3.6498e-15;57.0048;60.8147;-5.44953
+St discretization :
+50;65;80;95;110;125;140;155;170;185;
+Estimated prices wrt St :
+4.64746;6.54195;7.80186;9.45241;10.7352;11.6744;12.7356;15.7574;16.2767;18.4517;
+Estimated deltas wrt St :
+0.0929492;0.100645;0.0975232;0.099499;0.0975927;0.0933952;0.0909686;0.101661;0.0957453;0.0997387;

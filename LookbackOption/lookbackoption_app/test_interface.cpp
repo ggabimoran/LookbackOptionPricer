@@ -4,13 +4,14 @@ namespace lookback {
 	void test_interface() {
 		Matrix normSimuls{ 100,100 };
 		LookbackCall call{ 0,1,100,0.05,0.1 };
-		std::vector<double> greeks = compute_greeks(call, normSimuls);
-		for (int k{ 0 }; k < greeks.size(); ++k) {
-			std::cout << greeks[k] << ' ';
-		}
-		std::cout << '\n' << '\n';
-
-		Results results = execute(0, 1, "call", 100, 0.05, 0.1, 100, 100);
+		//std::vector<double> greeks = compute_greeks(call, normSimuls);
+		//for (int k{ 0 }; k < greeks.size(); ++k) {
+		//	std::cout << greeks[k] << ' ';
+		//}
+		//std::cout << '\n' << '\n';
+		
+		std::cout << execute(0, 1, "call", 100, 0.05, 0.1, 100, 100) << '\n';
+		/*Results results = execute(0, 1, "call", 100, 0.05, 0.1, 100, 100);
 		std::cout << "results.greeks: ";
 		for (int k{ 0 }; k < results.St_discretization; ++k) {
 			std::cout << results.greeks[k] << ' ';
@@ -32,6 +33,6 @@ namespace lookback {
 		double *test_convert = convert_std_vector(test);
 		for (int k{ 0 }; k < test.size(); ++k)
 			std::cout << test_convert[k] << ' ';
-		std::cout << '\n';
+		std::cout << '\n';*/
 	}
 }

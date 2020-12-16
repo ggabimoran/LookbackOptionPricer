@@ -1,3 +1,1 @@
-﻿  lookbackoption_dll.cpp
-     Création de la bibliothèque C:\Users\gabri\OneDrive\S5_ProjetInfo\LookbackOptionPricer\LookbackOption\Debug\lookbackoption_dll.lib et de l'objet C:\Users\gabri\OneDrive\S5_ProjetInfo\LookbackOptionPricer\LookbackOption\Debug\lookbackoption_dll.exp
-  lookbackoption_dll.vcxproj -> C:\Users\gabri\OneDrive\S5_ProjetInfo\LookbackOptionPricer\LookbackOption\Debug\lookbackoption_dll.dll
+﻿LINK : fatal error LNK1168: impossible d'ouvrir C:\Users\gabri\OneDrive\S5_ProjetInfo\LookbackOptionPricer\LookbackOption\Debug\lookbackoption_dll.dll pour écrire
