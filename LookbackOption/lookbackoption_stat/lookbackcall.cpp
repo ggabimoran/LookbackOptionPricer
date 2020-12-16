@@ -2,6 +2,8 @@
 #include <cmath>
 
 namespace lookback {
+	//computes analytical price : creates lambda for normal cumulative distribution function
+	//see Musiela and Rutkowski p.203
 	double LookbackCall::analytical_price() const{
 		auto normCDF{ [](double value) {return 0.5 * erfc(-value * sqrt(0.5)); } };
 		double r1 = r + pow(sigma, 2.0) / 2;
@@ -13,6 +15,7 @@ namespace lookback {
 	    double LCt = St * (normCDF(d1) - Pt * normCDF(d2) - C * normCDF(-d1) + C * Pt * normCDF(d2));
 		return LCt;
 	}
+	//simulates path for a given vector of normal simulations, updates min at each iteration if needed
 	double LookbackCall::simulate_payoff(std::vector<double> normSimulation) const{
 		int N = normSimulation.size();
 		double ST = St;

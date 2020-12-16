@@ -6,6 +6,7 @@ namespace lookback {
 		if (t_ >= T_) throw std::invalid_argument("Lookback Option maturity T must be greater than current date t");
 		if (t_ < 0) throw std::invalid_argument("Lookback Option current date t and maturity T must be positive");
 		if (sigma_ <= 0) throw std::invalid_argument("Lookback Option volatility must be strictly positive");
+		if (r <= 0) throw std::invalid_argument("Interest rate r must be positive");
 		if (St_ <= 0) throw std::invalid_argument("Lookback Option intial price St must be strictly positive");
 	}
 	LookbackOption::LookbackOption(const LookbackOption& option)
