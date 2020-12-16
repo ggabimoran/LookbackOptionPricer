@@ -15,7 +15,6 @@ namespace lookback {
 		//sizeof(double) = 8, sizeof(int) = 4 and sizeof("call") = 5 , sum is 52 bytes
 		try {
 			clock_t tStart = clock(); //start time
-
 			Results results{}; //initialize variables
 			int n = 10;
 			results.St_discretization = std::vector<double>(n);
@@ -57,12 +56,13 @@ namespace lookback {
 		}
 		catch (const std::exception &exception) {
 			write_to_csv(nullptr,nullptr,exception.what());
+			return 1;
 		}
 		return 0; //return results struct
 	}
 
 	int write_to_csv(LookbackOption *option, Results *results, std::string error_message) {
-		std::ofstream myfile ("../../results.csv");
+		std::ofstream myfile ("results.csv");
 		myfile << error_message << "\n";
 		if (error_message.compare("") != 0) return 1;
 		myfile << "Results for floating lookback option with parameters :\n";
