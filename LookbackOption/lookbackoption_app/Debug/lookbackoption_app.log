@@ -1,5 +1,9 @@
 ﻿  lookbackoption_app.cpp
   test_greeks.cpp
   test_interface.cpp
+  test_lookbackoption.cpp
+  test_matrix.cpp
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_app\test_matrix.cpp(41): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_app\test_matrix.cpp(44): warning C4018: '<' : incompatibilité signed/unsigned
   Génération de code en cours...
   lookbackoption_app.vcxproj -> C:\Users\gabri\OneDrive\S5_ProjetInfo\LookbackOptionPricer\LookbackOption\Debug\lookbackoption_app.exe

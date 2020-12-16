@@ -37,8 +37,8 @@ namespace lookback {
 		std::cout << "LookbackCall copy constructor OK\n";
 		std::cout << '\n';
 		std::cout << "Testing LookbackCall and LookbackPut analytical price\n";
-		std::cout << "Call analytical price: " << "should get approx. 10.30 :" << call.analytical_price() << "OK" << '\n';  
-		std::cout << "Put analytical price: " << "should get approx 5.90 :"  <<put.analytical_price() << "OK" << '\n';
+		std::cout << "Call analytical price: " << "should get approx. 10.30 :" << call.analytical_price() << "   OK" << '\n';  
+		std::cout << "Put analytical price: " << "should get approx 5.90 :"  <<put.analytical_price() << "   OK" << '\n';
 		
 		std::cout << '\n';
 		std::cout << "Testing simulate_payoff\n";

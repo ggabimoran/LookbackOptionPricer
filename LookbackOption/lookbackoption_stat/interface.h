@@ -10,30 +10,84 @@
 #include <string>
 
 
-
+/**
+ *namespace used for lookbackoption_app to avoid naming collisions
+ */
 namespace lookback{
-
+	/**
+	 *struct Results
+	 *contains program results 
+	 */
 	typedef struct{
-		double P; // theoretical price
-		std::vector<double> greeks; //greeks
-		std::vector<double> prices; //option prices as a function of the underlying share
-		std::vector<double> deltas; //option deltas as a function of the underlying share
-		double execution_time; // program execution time
+		/// theoretical price
+		double P; 
+		///greeks
+		std::vector<double> greeks; 
+		///option prices as a function of the underlying share
+		std::vector<double> prices; 
+		///option deltas as a function of the underlying share
+		std::vector<double> deltas;
+		/// program execution time
+		double execution_time; 
+		/// St discretization values
 		std::vector<double> St_discretization;
+		/// option type "call" or "put"
 		std::string option_type;
+		/// Monte Carlo parameter: number of simulations
 		int M;
+		/// Monte Carlo parameter: temporal discretization
 		int N;
 	} Results;
 	
-	//calls functions from greeks.h
+	/**
+	 *computes option greeks for given option and standard normal simulations
+	 *
+	 *@param option pointer to lookback call or put object
+	 *@param normSimuls standard normal simulations
+	 *@return vector containing delta,gamma,vega,rho and theta
+	 */
 	std::vector<double> compute_greeks(const LookbackOption& option, const Matrix& normSimuls);
 
-	//creates Lookbackcall/Lookbackput based on type value, then calls analytical_price() member for P
-	// Then create Matrix of normal distribution simulations of size N,M and 
-	//calls 3 functions above to create Results struct
+	/**
+	 *execute program
+	 *
+	 *@param double t current time
+	 *@param double T maturity
+	 *@param std::string type call or put
+	 *@param double St stock price at time t
+	 *@param double double r risk-free rate
+	 *@param double sigma stock volatility
+	 *@param int M Monte Carlo parameter for number of simulations
+	 *@param double Monte Carlo parameter for temporal discretization
+	 *@return 0 for correct execution, 1 if an exception is thrown
+	 */
 	int execute(double t,double T,std::string type,double St,double r,double sigma, int M, int N);
+	///intialize results struct
+	void execute_init_results(Results *res, std::string type, int M, int N, int n);
+	///compute estimated price and deltas by monte carlo for each St
+	void compute_discretization_vals(Results *results, LookbackOption *option, Matrix& normSimuls, double St, int M, int N, int n);
 
+	/**
+	 *write execute output to csv file
+	 *
+	 *@param option pointer to lookback call or put object
+	 *@param results pointer to results struct
+	 *@param error_message, default value means no exceptions where caught
+	 *@return 1 if error , 0 else
+	 */
 	int write_to_csv(LookbackOption *option, Results *results, std::string error_message="");
+	///write error message to csv
+	int write_error_message(std::ofstream& myfile, std::string error_message);
+	///write option params to csv
+	void write_option_params(std::ofstream& myfile, LookbackOption *option, Results *results);
+	///write execution time to csv
+	void write_execution_time(std::ofstream& myfile, Results *results);
+	///write theoretical price to csv
+	void write_theoretical_P(std::ofstream& myfile, Results *results);
+	///write greeks to csv
+	void write_greeks(std::ofstream& myfile, Results *results);
+	///write discretization vals to csv
+	void write_discretization_vals(std::ofstream& myfile, Results *results);
 }
 
 #endif // !INTERFACE_H

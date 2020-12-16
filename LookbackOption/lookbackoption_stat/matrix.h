@@ -28,7 +28,7 @@ namespace lookback {
 	 */
 	class Matrix {
 	private:
-		/// For Monte Carlo, M represents number of simulations, N spatial discretization
+		/// For Monte Carlo, M represents number of simulations, N temporal discretization
 		int M_, N_;
 		/// Signle std::vector containing all data, access i,j element with data[i*N + j]
 		std::vector<double> data;
