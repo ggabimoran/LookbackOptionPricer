@@ -25,7 +25,8 @@ namespace lookback {
 			std::normal_distribution<double> distribution(0.0, 1.0);
 			for (int i{ 0 }; i < M_; ++i) {
 				for (int j{ 0 }; j < N_; ++j)
-					data[i*N_ + j] = (j < (N_ + 1) / 2) ? distribution(generator) : -data[i*N_ + (N_ - 1 - j)];
+					//data[i*N_ + j] = (j < (N_ + 1) / 2) ? distribution(generator) : -data[i*N_ + (N_ - 1 - j)];
+					data[i*N_ + j] = distribution(generator);
 			}
 			break;
 		}
