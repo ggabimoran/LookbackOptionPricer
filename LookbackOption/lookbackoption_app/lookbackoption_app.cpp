@@ -10,7 +10,7 @@ int main() {
 		//lookback::test_matrix();
 		//lookback::test_lookbackoption();
 		//lookback::test_greeks();
-		lookback::test_interface();
+		//lookback::test_interface();
 	}
 	catch (const std::exception &exception) {
 		std::cerr << "Standard exception: " << exception.what() << '\n';

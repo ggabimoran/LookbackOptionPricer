@@ -55,7 +55,7 @@ namespace lookback {
 		static double theta(const LookbackOption& option, const Matrix& normSimuls);
 
 		static double analytical_gamma() { return 0; }
-		static double analytical_delta(const LookbackOption& option);
+		static double analytical_delta(const LookbackOption& option, std::string option_type);
 	};
 }
 

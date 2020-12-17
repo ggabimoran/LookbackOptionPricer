@@ -101,7 +101,7 @@ namespace lookback{
 	int execute_convergence(double t, double T, std::string option_type, double St, double r, double sigma, int N, std::string convergence_type);
 	void compute_MC_price_evolution(Convergence *convergence, LookbackOption* option, const Matrix& normSimuls);
 	int write_convergence_to_csv(Convergence *convergence, std::string error_message="");
-	void compute_convergence(Convergence *convergence, LookbackOption *option, const Matrix& normSimuls, std::string convergence_type);
+	void compute_convergence(Convergence *convergence, LookbackOption *option, const Matrix& normSimuls, std::string convergence_type, std::string option_type);
 	void compute_MC_greek_evolution(Convergence *convergence, LookbackOption* option, const Matrix& normSimuls, Greek_type type);
 
 }

@@ -10,7 +10,7 @@ namespace lookback {
 		
 		std::cout << "execute(0, 1, call, 100, 0.05, 0.1, 100, 100)\n";
 		//std::cout << execute(0, 1, "call", 100, 0.05, 0.1, 100, 100) << '\n';
-		std::cout << execute_convergence(0, 1, "call", 100, 0.05, 0.1, 100, "price") << '\n';
+		std::cout << execute_convergence(0, 1, "call", 100, 0.05, 0.1, 100, "delta") << '\n';
 		std::cout << "Results written in lookbackoption_app directory OK\n";
 	}
 }

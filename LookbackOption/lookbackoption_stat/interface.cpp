@@ -155,12 +155,12 @@ namespace lookback {
 		std::vector<double> simulation{};
 		for (int i{ 0 }; i < M; ++i) {
 			simulation = normSimuls(i);
-			greek_estimate += Greeks::derivative_approx(simulation, payoffupper, payofflower, payoffmiddle, divider, type) / M;
+			greek_estimate += Greeks::derivative_approx(simulation, payoffupper, payofflower, payoffmiddle, divider, type);
 			convergence->MC_evolution[i] = greek_estimate / (i+1); //divide by number of simulations used
 		}
 	}
 
-	void compute_convergence(Convergence *convergence, LookbackOption *option, const Matrix& normSimuls, std::string convergence_type) {
+	void compute_convergence(Convergence *convergence, LookbackOption *option, const Matrix& normSimuls, std::string convergence_type, std::string option_type) {
 		int M = normSimuls.get_M();
 		if (convergence_type.compare("price")==0) {
 			convergence->theoretical = std::vector<double>(M, option->estimate_price(normSimuls));
@@ -169,6 +169,10 @@ namespace lookback {
 		else if (convergence_type.compare("gamma")==0) {
 			convergence->theoretical = std::vector<double>(M, Greeks::analytical_gamma());
 			compute_MC_greek_evolution(convergence, option, normSimuls, Greek_type::gamma);
+		}
+		else if (convergence_type.compare("delta") == 0) {
+			convergence->theoretical = std::vector<double>(M, Greeks::analytical_delta(*option,option_type));
+			compute_MC_greek_evolution(convergence, option, normSimuls, Greek_type::delta);
 		}
 	}
 
@@ -182,7 +186,7 @@ namespace lookback {
 			LookbackOption* option{ &call };
 			if (option_type.compare("put") == 0) option = &put;
 			convergence.MC_evolution = std::vector<double>(M);
-			compute_convergence(&convergence, option, normSimuls, convergence_type);
+			compute_convergence(&convergence, option, normSimuls, convergence_type,option_type);
 
 			write_convergence_to_csv(&convergence);
 		}
