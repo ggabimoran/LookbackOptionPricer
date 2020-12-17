@@ -21,6 +21,8 @@ namespace lookback{
 	typedef struct{
 		/// theoretical price
 		double P; 
+		// monte carlo P
+		double MC_P;
 		///greeks
 		std::vector<double> greeks; 
 		///option prices as a function of the underlying share
@@ -84,6 +86,8 @@ namespace lookback{
 	void write_execution_time(std::ofstream& myfile, Results *results);
 	///write theoretical price to csv
 	void write_theoretical_P(std::ofstream& myfile, Results *results);
+	///write monte carlo price
+	void write_MC_P(std::ofstream& myfile, Results *results);
 	///write greeks to csv
 	void write_greeks(std::ofstream& myfile, Results *results);
 	///write discretization vals to csv

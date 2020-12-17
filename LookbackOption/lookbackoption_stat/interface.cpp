@@ -22,18 +22,13 @@ namespace lookback {
 	}
 
 	void compute_discretization_vals(Results *results, LookbackOption *option, Matrix& normSimuls, double St, int M, int N, int n) {
-		double St_max{ 2 * St }, St_min{ St / 2 }, price_estimate{ 0 }, Pt{ exp(-option->get_r() * (option->get_T() - option->get_t())) };
+		double St_max{ 2 * St }, St_min{ St / 2 };
 		for (int k{ 0 }; k < n; ++k) { // for each St value
 			normSimuls = Matrix{ M,N }; // instantiate new matrix of normal simulations
 			results->St_discretization[k] = St_min + (St_max - St_min) * k / n;
 			option->set_St(results->St_discretization[k]); // set St
 			results->deltas[k] = Greeks::delta(*option, normSimuls); //compute delta
-			price_estimate = 0; //compute price estimate as empirical mean of M simulated payoffs discounting with Pt
-			for (int i{ 0 }; i < M; ++i) {
-				price_estimate += Pt * option->simulate_payoff(normSimuls(i));
-			}
-			price_estimate /= M;
-			results->prices[k] = price_estimate;
+			results->prices[k] = option->estimate_price(normSimuls);
 		}
 		option->set_St(St);
 	}
@@ -52,6 +47,7 @@ namespace lookback {
 
 			results.greeks = compute_greeks(*option, normSimuls); //compute option greeks
 			results.P = option->analytical_price(); //compute option analytical price
+			results.MC_P = option->estimate_price(normSimuls);
 			compute_discretization_vals(&results, option, normSimuls, St, M, N, n);
 
 			clock_t tEnd = clock(); //end time
@@ -88,6 +84,11 @@ namespace lookback {
 		myfile << results->P << "\n";
 	}
 
+	void write_MC_P(std::ofstream& myfile, Results *results) {
+		myfile << "Monte Carlo price :\n";
+		myfile << results->MC_P << "\n";
+	}
+
 	void write_greeks(std::ofstream& myfile, Results *results) {
 		myfile << "Delta;Gamma;Vega;Rho;Theta\n";
 		myfile << results->greeks[0] << ';' << results->greeks[1] << ';' << results->greeks[2] << ';' << results->greeks[3] << ';' << results->greeks[4] << "\n";
@@ -115,6 +116,7 @@ namespace lookback {
 		write_option_params(myfile,option,results);
 		write_execution_time(myfile, results);
 		write_theoretical_P(myfile, results);
+		write_MC_P(myfile, results);
 		write_greeks(myfile, results);
 		write_discretization_vals(myfile, results);
 		myfile.close();

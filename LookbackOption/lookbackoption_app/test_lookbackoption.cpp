@@ -44,7 +44,7 @@ namespace lookback {
 		std::cout << "Testing simulate_payoff\n";
 		std::cout << "Matrix normSimuls(100, 100);\n";
 		std::cout << '\n';
-		Matrix normSimuls(10000, 100);
+		Matrix normSimuls(1000, 100);
 		std::vector<double> simulation{};
 		double call_payoff_estimate{ 0 }, put_payoff_estimate{ 0 };
 		double Pt = exp(-call.get_r() * (call.get_T() - call.get_t()));
@@ -61,6 +61,7 @@ namespace lookback {
 		std::cout << "Testing simulate payoff execution time\n";
 
 		std::cout << '\n' << '\n';
+		std::cout << call.estimate_price(normSimuls) << '\n';
 
 		/*double execution_time;
 		Matrix normSimuls100(100, 100);

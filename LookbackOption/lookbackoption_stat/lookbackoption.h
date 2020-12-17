@@ -4,6 +4,7 @@
 /**
  *Import relevant libraries
  */
+#include "matrix.h"
 #include <vector>
 /**
  *namespace used for lookbackoption_app to avoid naming collisions
@@ -70,6 +71,8 @@ namespace lookback {
 		 *@return payoff estimate at maturity T
 		 */
 		virtual double simulate_payoff(std::vector<double> normSimulation) const = 0;
+		///estimate option price
+		virtual double estimate_price(const Matrix& normSimuls) const;
 		///pure virtual copy function to copy a lookbackcall or lookbackput from abstract class pointer
 		virtual LookbackOption* copy() const = 0;
 	};

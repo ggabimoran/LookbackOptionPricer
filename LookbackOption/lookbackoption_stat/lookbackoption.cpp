@@ -21,4 +21,17 @@ namespace lookback {
 		sigma = option.sigma;
 		return *this;
 	}
+	double LookbackOption::estimate_price(const Matrix& normSimuls) const {
+		double price_estimate{ 0 }, payoff_estimate{ 0 };
+		int M = normSimuls.get_M();
+		std::vector<double> simulation{};
+		double Pt = exp(-r * (T - t));
+		for (int i{ 0 }; i < M; ++i) {
+			simulation = normSimuls(i);
+			payoff_estimate += this->simulate_payoff(simulation);
+		}
+		payoff_estimate /= M; //payoffestimate
+		price_estimate = Pt * payoff_estimate; //discount to get price estimate
+		return price_estimate;
+	}
 }
