@@ -1,4 +1,3 @@
 ﻿  greeks.cpp
-  interface.cpp
-  Génération de code en cours...
+c:\users\gabri\onedrive\s5_projetinfo\lookbackoptionpricer\lookbackoption\lookbackoption_stat\greeks.cpp(84): warning C4101: 'delta' : variable locale non référencée
   lookbackoption_stat.vcxproj -> C:\Users\gabri\OneDrive\S5_ProjetInfo\LookbackOptionPricer\LookbackOption\Debug\lookbackoption_stat.lib

@@ -73,4 +73,21 @@ namespace lookback {
 	double Greeks::theta(const LookbackOption& option, const Matrix& normSimuls) {
 		return monte_carlo_estimation(option, normSimuls, Greek_type::theta);
 	}
+
+	double analytical_delta(const LookbackOption& option,std::string option_type) {
+		auto normCDF{ [](double value) {return 0.5 * erfc(-value * sqrt(0.5)); } };
+		//auto normPDF{ [](double value) {return exp(-pow(value,2.0)/2)) /(sqrt(2 * atan(1) * 4)); } };
+		double r1 = option.get_r() + pow(option.get_sigma(), 2) / 2;
+		double tau = option.get_T() - option.get_t();
+		double Pt = exp(-option.get_r() * tau);
+		double C = pow(option.get_sigma(), 2) / (2 * option.get_r());
+		double delta;
+		if (option_type.compare("call") == 0) {
+			//delta = option.get_St() 
+		}
+		else {
+
+		}
+		return 0;
+	}
 }

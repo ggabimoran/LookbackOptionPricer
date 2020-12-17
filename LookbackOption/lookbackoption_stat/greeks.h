@@ -30,6 +30,7 @@ namespace lookback {
 	private:
 		///Derivative approximation precision parameter
 		static double alpha; 
+	public:
 		/*
 		 *Derivative approximation
 		 *@param option abstract class pointer of option to compute greek
@@ -39,10 +40,9 @@ namespace lookback {
 		 */
 		static double derivative_approx(std::vector<double> simulation, LookbackOption *payoffupper, LookbackOption *payofflower, LookbackOption *payoffmiddle, double divider, Greek_type type);
 		///set derivative approximation parameters
-		static void set_derivative_approx_params(double& divider,LookbackOption* payoffupper,LookbackOption* payofflower,LookbackOption* payoffmiddle,Greek_type type);
+		static void set_derivative_approx_params(double& divider, LookbackOption* payoffupper, LookbackOption* payofflower, LookbackOption* payoffmiddle, Greek_type type);
 		///compute monte carlo estimation of derivative approximation
 		static double monte_carlo_estimation(const LookbackOption& option, const Matrix& normSimuls, Greek_type type);
-	public:
 		///Monte carlo approximation of option delta for a given matrix of normal simulations
 		static double delta(const LookbackOption& option, const Matrix& normSimuls);
 		///Monte carlo approximation of option gamma for a given matrix of normal simulations
@@ -55,6 +55,7 @@ namespace lookback {
 		static double theta(const LookbackOption& option, const Matrix& normSimuls);
 
 		static double analytical_gamma() { return 0; }
+		static double analytical_delta(const LookbackOption& option);
 	};
 }
 
